@@ -1,0 +1,34 @@
+{
+  "root": true,
+  "ignorePatterns": ["**/*"],
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "rules": {
+        "curly": ["error", "all"],
+        "prettier/prettier": [
+          "error",
+          {
+            "semi": true,
+            "trailingComma": "all",
+            "singleQuote": true,
+            "printWidth": 120,
+            "tabWidth": 2,
+            "arrowParens": "always"
+          }
+        ]
+      }
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
+      "extends": ["plugin:@typescript-eslint/recommended", "plugin:prettier/recommended"],
+      "rules": {
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/interface-name-prefix": 0,
+        "@typescript-eslint/no-empty-interface": 0,
+        "@typescript-eslint/no-explicit-any": [1, { "fixToUnknown": true }],
+        "@typescript-eslint/explicit-module-boundary-types": 0
+      }
+    }
+  ]
+}
