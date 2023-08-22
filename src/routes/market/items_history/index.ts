@@ -1,5 +1,5 @@
 import { ApiBase } from '../../../base/api';
-import { IGetItemHistoryPayload, IGetItemsHistoryPayload } from './types';
+import { IGetItemHistoryData, IGetItemHistoryPayload, IGetItemsHistoryPayload, IGetItemsHistoryResponse } from './types';
 
 export class ItemsHistoryRoutes {
   private readonly baseUri: string;
@@ -8,11 +8,11 @@ export class ItemsHistoryRoutes {
     this.baseUri = '/market/history';
   }
 
-  public async get_items_history(payload: IGetItemsHistoryPayload): Promise<unknown> {
-    return this.api.post<unknown, IGetItemsHistoryPayload>(`${this.baseUri}/list`, payload);
+  public async get_items_history(payload: IGetItemsHistoryPayload): Promise<IGetItemsHistoryResponse> {
+    return this.api.post<IGetItemsHistoryResponse, IGetItemsHistoryPayload>(`${this.baseUri}/list`, payload);
   }
 
-  public async get_item_history(payload: IGetItemHistoryPayload): Promise<unknown> {
-    return this.api.post<unknown, IGetItemHistoryPayload>(`${this.baseUri}/get`, payload);
+  public async get_item_history(payload: IGetItemHistoryPayload): Promise<IGetItemHistoryData> {
+    return this.api.post<IGetItemHistoryData, IGetItemHistoryPayload>(`${this.baseUri}/get`, payload);
   }
 }

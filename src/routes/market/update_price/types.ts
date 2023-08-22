@@ -9,3 +9,8 @@ export interface IUpdateSingleItemPricePayload {
 export interface IUpdateMultipleItemsPricesPayload {
   items: IUpdateSingleItemPricePayload[];
 }
+
+export interface IUpdateMultipleItemsPriceResponse {
+  id: string;
+  success: boolean;
+}

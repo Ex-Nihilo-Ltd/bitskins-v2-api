@@ -25,3 +25,27 @@ export interface IDisableBumpingPayload {
 export interface IBuyBumpsPackagePayload {
   id: BumpPackage;
 }
+
+export interface ICounter {
+  total: number;
+  filtered: number;
+}
+
+export interface IBumpedItem {
+  id: string;
+  user_id: number;
+  quantity: number;
+  period: number;
+  status: number;
+  created_at: string;
+  updated_at: string;
+  next_bump_at: null;
+  name: string;
+  class_id: string;
+  float_value?: number;
+}
+
+export interface IGetBumpedItemsResponse {
+  counter: ICounter;
+  list: IBumpedItem[];
+}

@@ -8,6 +8,9 @@ export interface IItemPayload {
 
 export interface IBuySingleItemPayload extends IItemPayload {
   app_id?: AppId; // default AppId.CSGO
+  id: string;
+  max_price: number;
+  hash?: string;
 }
 
 export interface IBuyMultipleItemsPayload {
@@ -22,6 +25,20 @@ export interface IBuyBulkItemsExternal {
 
 export interface IBuyBulkItemsPayload {
   app_id?: AppId; // default AppId.CSGO
-  id: string;
-  external?: IBuyBulkItemsExternal;
+  skin_id: number;
+  max_price: number;
+  quantity: number;
+}
+
+export interface IBuySingleItemResponse {
+  receipt_id: string;
+}
+
+export interface IBuyMultipleItemsResponse {
+  result: { id: string; success: boolean }[];
+}
+
+export interface IBuyBulkItemsResponse {
+  result: { id: string; success: boolean }[];
+  receipt_id: string;
 }
