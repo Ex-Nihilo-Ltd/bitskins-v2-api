@@ -3,7 +3,7 @@
 ## Integration
 
 ```js
-import BitskinsApiV2 from 'bitskinsapiv2';
+import BitskinsApiV2 from 'bitskins-v2-api';
 const api = new BitskinsApiV2();
 ```
 
