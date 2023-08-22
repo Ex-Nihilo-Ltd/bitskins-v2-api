@@ -47,15 +47,34 @@ export class ApiBase {
     this.api.interceptors.response.use(
       (res) => res,
       (error) => {
-        const errorCode = error.code as ApiErrorCode;
+        if(error.response.data?.tradehold) {
+          throw {
+            code: 400,
+            error_type: 'Forbidden',
+            error_path: 400,
+            error_message: `Cannot withold item for ${error.response.data?.tradehold} days because it has tradehold active.`,
+          };
+        }
 
+        if (error?.response.data?.code) {
+
+          
+          const errorCode = error.response.data.code as ApiErrorCode;
+          
+          throw {
+            code: errorCode,
+            error_type: error.response.data.error_type,
+            error_path: ApiErrorPath[errorCode],
+            error_message: ApiErrorMessage[errorCode],
+          };
+        }
         throw {
-          code: error.code,
-          error_type: error.error_type,
-          error_path: ApiErrorPath[errorCode],
-          error_message: ApiErrorMessage[errorCode],
-        };
-      },
+          code: ApiErrorCode.REQ_000,
+          error_type: 'public',
+          error_path: ApiErrorPath.REQ_000,
+          error_message: ApiErrorMessage.REQ_000,
+        } as IApiError;
+      }
     );
   }
 

@@ -1,4 +1,5 @@
 import { ApiBase } from '../../base/api';
+import { AllAvailableSkins } from './all_available_skins';
 import { AllInsellItemsRoutes } from './all_insell_items';
 import { BumpUpRoutes } from './bump_up';
 import { BuyItemRoutes } from './buy_item';
@@ -25,6 +26,7 @@ export class MarketRoutes {
   public readonly relist: RelistRoutes;
   public readonly update_price: UpdatePriceRoutes;
   public readonly withdraw: MarketWithdrawRoutes;
+  public readonly all_available_skins: AllAvailableSkins;
 
   constructor(private readonly api: ApiBase) {
     this.all_insell_items = new AllInsellItemsRoutes(this.api);
@@ -39,5 +41,6 @@ export class MarketRoutes {
     this.relist = new RelistRoutes(this.api);
     this.update_price = new UpdatePriceRoutes(this.api);
     this.withdraw = new MarketWithdrawRoutes(this.api);
+    this.all_available_skins = new AllAvailableSkins(this.api);
   }
 }
