@@ -52,7 +52,7 @@ export class ApiBase {
             code: 400,
             error_type: 'Forbidden',
             error_path: 400,
-            error_message: `Can not withold item for ${error.response.data?.tradehold} days because it has tradehold active.`,
+            error_message: `Cannot withold item for ${error.response.data?.tradehold} days because it has tradehold active.`,
           };
         }
 
