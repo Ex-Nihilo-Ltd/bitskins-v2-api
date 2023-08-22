@@ -25,3 +25,12 @@ export class BitskinsApiV2 {
     this.wallet = new WalletRoutes(this.api);
   }
 }
+
+export * from './base/api/types';
+export * from './base/error/types';
+
+export * from './routes/account/types';
+export * from './routes/common/types';
+export * from './routes/market/types';
+export * from './routes/steam/types';
+export * from './routes/wallet';

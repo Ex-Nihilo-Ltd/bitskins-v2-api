@@ -1,12 +1,12 @@
 import { AppId } from '../../common/types';
 
-export interface IItemPayload {
+export interface IBuyItemPayload {
   id: string;
   max_price: number;
   hash?: string;
 }
 
-export interface IBuySingleItemPayload extends IItemPayload {
+export interface IBuySingleItemPayload extends IBuyItemPayload {
   app_id?: AppId; // default AppId.CSGO
   id: string;
   max_price: number;
@@ -15,12 +15,7 @@ export interface IBuySingleItemPayload extends IItemPayload {
 
 export interface IBuyMultipleItemsPayload {
   app_id?: AppId; // default AppId.CSGO
-  items: IItemPayload[];
-}
-
-export interface IBuyBulkItemsExternal {
-  steam_id: string;
-  steam_token: string;
+  items: IBuyItemPayload[];
 }
 
 export interface IBuyBulkItemsPayload {

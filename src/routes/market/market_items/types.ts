@@ -1,5 +1,41 @@
-import { AppId, INumberBoolean, ItemStatus } from '../../common/types';
-import { SearchCSGOField, SearchDota2Field, SearchOrder, SearchRustField, SearchTF2Field } from './enum';
+import { AppId, ICounter, INumberBoolean, ItemStatus } from '../../common/types';
+
+export enum SearchOrder {
+  ASC = 'ASC',
+  DESC = 'DESC',
+}
+
+export enum SearchTF2Field {
+  price = 'price',
+  id = 'id',
+  discount = 'discount',
+  bumped_at = 'bumped_at',
+}
+
+export enum SearchDota2Field {
+  price = 'price',
+  id = 'id',
+  discount = 'discount',
+  bumped_at = 'bumped_at',
+}
+
+export enum SearchCSGOField {
+  price = 'price',
+  id = 'id',
+  discount = 'discount',
+  bumped_at = 'bumped_at',
+  float_value = 'float_value',
+  paint_index = 'paint_index',
+  paint_seed = 'paint_seed',
+  extras_1 = 'extras_1',
+}
+
+export enum SearchRustField {
+  price = 'price',
+  id = 'id',
+  discount = 'discount',
+  bumped_at = 'bumped_at',
+}
 
 export interface IWhereMine {
   status?: ItemStatus[];
@@ -189,11 +225,6 @@ export interface ISearchDota2ResponseItem {
   slot_id: number;
   type_id: number;
   bot_steam_id: string;
-}
-
-export interface ICounter {
-  total: number;
-  filtered: number;
 }
 
 export interface ISearchDota2Response {
