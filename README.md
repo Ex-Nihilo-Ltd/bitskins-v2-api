@@ -175,7 +175,7 @@ buy_single_item({ app_id?: AppId, id: string, max_price: number, hash?: string }
 Buy item\
 [Bitskins docs](https://bitskins.com/docs/api/v2#api-market-buy-single)
 
-buy_multiple_items({ app_id?: AppId, items: IItemPayload[] })\
+buy_multiple_items({ app_id?: AppId, items: IBuyItemPayload[] })\
 Buy multiple items\
 [Bitskins docs](https://bitskins.com/docs/api/v2#api-market-buy-many)
 

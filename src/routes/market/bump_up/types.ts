@@ -1,4 +1,5 @@
 import { AppId, AutoBumpPeriod, BumpPackage } from '../../common/types';
+import { ICounter } from '../../common/types';
 
 export interface IBumpSingleItemPayload {
   app_id: AppId;
@@ -24,11 +25,6 @@ export interface IDisableBumpingPayload {
 
 export interface IBuyBumpsPackagePayload {
   id: BumpPackage;
-}
-
-export interface ICounter {
-  total: number;
-  filtered: number;
 }
 
 export interface IBumpedItem {

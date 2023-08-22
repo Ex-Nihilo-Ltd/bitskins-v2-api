@@ -1,22 +1,17 @@
-import { AppId } from '../../common/types';
+import { AppId, IBuyBulkItemsExternal } from '../../common/types';
 
-export interface IItemPayload {
+export interface IWithdrawItemPayload {
   id: string;
   external?: IBuyBulkItemsExternal;
 }
 
-export interface IBuyBulkItemsExternal {
-  steam_id: string;
-  steam_token: string;
-}
-
-export interface IWithdrawSingleItemPayload extends IItemPayload {
+export interface IWithdrawSingleItemPayload extends IWithdrawItemPayload {
   app_id: AppId;
   id: string;
   external?: {
     steam_id: string;
     steam_token: string;
-  } 
+  };
 }
 
 export interface IWithdrawMultipleItemsPayload {
