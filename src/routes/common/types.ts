@@ -212,3 +212,8 @@ export interface IUserNotify {
   inventory_bargain_received_discord: INumberBoolean; // default 0
   inventory_bargain_received_telegram: INumberBoolean; // default 0
 }
+
+export interface ICounter {
+  total: number;
+  filtered: number;
+}

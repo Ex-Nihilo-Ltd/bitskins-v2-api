@@ -1,4 +1,5 @@
 import { ApiBase } from '../../../base/api';
+import { IGetFreePlansResponse } from './types';
 
 export class FeePlanRoutes {
   private readonly baseUri: string;
@@ -7,7 +8,7 @@ export class FeePlanRoutes {
     this.baseUri = '/config/fee_plan';
   }
 
-  public async get_fee_plans(): Promise<unknown> {
-    return this.api.get<unknown>(`${this.baseUri}/list`);
+  public async get_fee_plans(): Promise<IGetFreePlansResponse> {
+    return this.api.get<IGetFreePlansResponse>(`${this.baseUri}/list`);
   }
 }

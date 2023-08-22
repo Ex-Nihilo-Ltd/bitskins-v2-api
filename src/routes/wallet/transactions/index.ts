@@ -1,5 +1,9 @@
 import { ApiBase } from '../../../base/api';
-import { IGetWalletTransactionsPayload } from './types';
+import {
+  IGetWalletPendingTransactionsResponse,
+  IGetWalletTransactionsPayload,
+  IGetWalletTransactionsResponse,
+} from './types';
 
 export class WalletTransactionRoutes {
   private readonly baseUri: string;
@@ -8,11 +12,21 @@ export class WalletTransactionRoutes {
     this.baseUri = '/wallet/transaction';
   }
 
-  public async get_wallet_transactions(payload: IGetWalletTransactionsPayload): Promise<unknown> {
-    return this.api.post<unknown, IGetWalletTransactionsPayload>(`${this.baseUri}/list`, payload);
+  public async get_wallet_transactions(
+    payload: IGetWalletTransactionsPayload,
+  ): Promise<IGetWalletTransactionsResponse> {
+    return this.api.post<IGetWalletTransactionsResponse, IGetWalletTransactionsPayload>(
+      `${this.baseUri}/list`,
+      payload,
+    );
   }
 
-  public async get_wallet_pending_transactions(payload: IGetWalletTransactionsPayload): Promise<unknown> {
-    return this.api.post<unknown, IGetWalletTransactionsPayload>(`${this.baseUri}/list_pending`, payload);
+  public async get_wallet_pending_transactions(
+    payload: IGetWalletTransactionsPayload,
+  ): Promise<IGetWalletPendingTransactionsResponse> {
+    return this.api.post<IGetWalletPendingTransactionsResponse, IGetWalletTransactionsPayload>(
+      `${this.baseUri}/list_pending`,
+      payload,
+    );
   }
 }

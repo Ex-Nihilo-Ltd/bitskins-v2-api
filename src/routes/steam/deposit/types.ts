@@ -9,3 +9,13 @@ export interface IDepositSteamItems {
   asset_id: string;
   price: number;
 }
+
+export interface IDespositSteamItemsResponse {
+  available: string[];
+  missing: string[];
+  not_accepting: string[];
+  wrong_price: string[];
+  locked: string[];
+  hash: string;
+  trade: { tradeofferid: string };
+}

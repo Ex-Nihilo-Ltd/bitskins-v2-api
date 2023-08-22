@@ -1,4 +1,5 @@
 import { ApiBase } from '../../../base/api';
+import { IGetCurrencyRatesResponse } from './types';
 
 export class CurrencyRateRoutes {
   private readonly baseUri: string;
@@ -7,7 +8,7 @@ export class CurrencyRateRoutes {
     this.baseUri = '/config/currency';
   }
 
-  public async get_currency_rates(): Promise<unknown> {
-    return this.api.get<unknown>(`${this.baseUri}/list`);
+  public async get_currency_rates(): Promise<IGetCurrencyRatesResponse> {
+    return this.api.get<IGetCurrencyRatesResponse>(`${this.baseUri}/list`);
   }
 }
