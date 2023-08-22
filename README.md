@@ -10,7 +10,7 @@ const api = new BitskinsApiV2();
 ## Installation
 
 ```
-  $ npm install bitskinsapiv2
+  $ npm install bitskins-v2-api
 ```
 
 ## Features complete coverage of the Bitskins API in its entirety.
