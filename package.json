@@ -1,10 +1,13 @@
 {
   "name": "bitskins-v2-api",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "SDK coverage for Bitskin's API (v2)",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["/dist"],
   "scripts": {
     "build": "tsc",
+    "prepublishOnly": "npm run build",
     "test": "echo 'No Test'"
   },
   "repository": {
