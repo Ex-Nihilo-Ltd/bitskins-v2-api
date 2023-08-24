@@ -1,10 +1,12 @@
 {
   "name": "bitskins-v2-api",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "SDK coverage for Bitskin's API (v2)",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": ["/dist"],
+  "files": [
+    "/dist"
+  ],
   "scripts": {
     "build": "tsc",
     "prepublishOnly": "npm run build",
@@ -27,7 +29,8 @@
   },
   "homepage": "https://github.com/Ex-Nihilo-Ltd/bitskins-v2-api#readme",
   "devDependencies": {
-    "@types/node": "^20.4.5",
+    "@types/node": "^20.5.3",
+    "@types/ws": "^8.5.5",
     "eslint": "^8.46.0",
     "eslint-config-prettier": "^8.9.0",
     "eslint-plugin-prettier": "^5.0.0",
@@ -35,6 +38,7 @@
     "typescript": "^5.1.6"
   },
   "dependencies": {
-    "axios": "^1.4.0"
+    "axios": "^1.4.0",
+    "ws": "^8.13.0"
   }
 }
