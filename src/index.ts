@@ -1,7 +1,6 @@
 import { ApiBase } from './base/api';
 import { IApiBaseConfig } from './base/api/types';
 import { AccountRoutes } from './routes/account';
-import { AppId } from './routes/common/types';
 import { ConfigRoutes } from './routes/config';
 import { MarketRoutes } from './routes/market';
 import { SteamRoutes } from './routes/steam';
@@ -26,8 +25,3 @@ export class BitskinsApiV2 {
     this.wallet = new WalletRoutes(this.api);
   }
 }
-
-const api = new BitskinsApiV2({ apiKey: '2a2105fc-d61f-4c40-b3a1-252bab6377d3' }).wallet.transactions
-  .get_wallet_pending_transactions({ limit: 30 })
-  .then((res) => console.log('res', res))
-  .catch((err) => console.error('err', err));

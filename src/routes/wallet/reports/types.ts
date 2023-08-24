@@ -1,4 +1,4 @@
-import { Order, ReportStatus, ReportType, WalletReportsOrderType } from '../../common/types';
+import { ICounter, Order, ReportStatus, ReportType, WalletReportsOrderType } from '../../common/types';
 
 export interface IGetWalletReportsPayload {
   limit?: number;
@@ -24,4 +24,19 @@ export interface IGetWalletReportsOrder {
 export interface IGetWalletReportsWhere {
   type?: ReportType;
   status?: ReportStatus;
+}
+
+export interface IWalletReportItem {
+  id: number;
+  user_id: number;
+  type: number;
+  date: string;
+  status: ReportStatus;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface IGetWalletReportsResponse {
+  counter: ICounter;
+  list: IWalletReportItem[];
 }

@@ -12,7 +12,6 @@ export class WalletStatsRoutes {
     return this.api.post<IGetWalletStatsResponse>(`${this.baseUri}/get`, {});
   }
 
-  //TODO: Check why it returns empty objects
   public async get_kyc_limits(): Promise<IGetKYCLimitsResponse> {
     return this.api.post<IGetKYCLimitsResponse>(`${this.baseUri}/get_kyc_limit`, {});
   }

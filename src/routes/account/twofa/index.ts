@@ -1,5 +1,6 @@
 import { ApiBase } from '../../../base/api';
 import {
+  ICreateTwoFAResponse,
   IDisableTwoFACodePayload,
   IUnlockTwoFAPayload,
   IVerifyDisablingTwoFACodePayload,
@@ -13,27 +14,27 @@ export class TwoFARoutes {
     this.baseUri = '/account/twofa';
   }
 
-  public async create_twofa_code(): Promise<unknown> {
-    return this.api.post<unknown>(`${this.baseUri}/create`, {});
+  public async create_twofa_code(): Promise<ICreateTwoFAResponse> {
+    return this.api.post<ICreateTwoFAResponse>(`${this.baseUri}/create`, {});
   }
 
-  public async verify_twofa_code(payload: IVerifyTwoFACodePayload): Promise<unknown> {
-    return this.api.post<unknown, IVerifyTwoFACodePayload>(`${this.baseUri}/verify`, payload);
+  public async verify_twofa_code(payload: IVerifyTwoFACodePayload): Promise<boolean> {
+    return this.api.post<boolean, IVerifyTwoFACodePayload>(`${this.baseUri}/verify`, payload);
   }
 
-  public async disable_twofa_code(payload: IDisableTwoFACodePayload): Promise<unknown> {
-    return this.api.post<unknown, IDisableTwoFACodePayload>(`${this.baseUri}/disable`, payload);
+  public async disable_twofa_code(payload: IDisableTwoFACodePayload): Promise<boolean> {
+    return this.api.post<boolean, IDisableTwoFACodePayload>(`${this.baseUri}/disable`, payload);
   }
 
-  public async verify_disabling_twfa_code(payload: IVerifyDisablingTwoFACodePayload): Promise<unknown> {
-    return this.api.post<unknown, IVerifyDisablingTwoFACodePayload>(`${this.baseUri}/verify_disable`, payload);
+  public async verify_disabling_twofa_code(payload: IVerifyDisablingTwoFACodePayload): Promise<boolean> {
+    return this.api.post<boolean, IVerifyDisablingTwoFACodePayload>(`${this.baseUri}/verify_disable`, payload);
   }
 
-  public async lock_twofa(): Promise<unknown> {
-    return this.api.post<unknown>(`${this.baseUri}/lock`, {});
+  public async lock_twofa(): Promise<boolean> {
+    return this.api.post<boolean>(`${this.baseUri}/lock`, {});
   }
 
-  public async unlock_twofa(payload: IUnlockTwoFAPayload): Promise<unknown> {
-    return this.api.post<unknown, IUnlockTwoFAPayload>(`${this.baseUri}/unlock`, payload);
+  public async unlock_twofa(payload: IUnlockTwoFAPayload): Promise<boolean> {
+    return this.api.post<boolean, IUnlockTwoFAPayload>(`${this.baseUri}/unlock`, payload);
   }
 }

@@ -16,8 +16,7 @@ export class SteamTradesRoutes {
     return this.api.post<IActiveSteamTradesResponse, IGetSteamTradesPayload>(`${this.baseUri}/active`, payload);
   }
 
-  //TODO: update response when there are listed items
-  public async get_hashes_of_active_steam_trades(): Promise<[]> {
-    return this.api.post<[]>(`${this.baseUri}/active_hash`, {});
+  public async get_hashes_of_active_steam_trades(): Promise<unknown> {
+    return this.api.post<unknown>(`${this.baseUri}/active_hash`, {});
   }
 }

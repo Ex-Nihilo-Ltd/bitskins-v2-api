@@ -12,17 +12,14 @@ export class AffilateRoutes {
     this.baseUri = '/account/affiliate';
   }
 
-  // TODO: Check why nothing is being returned
-  public async get_affiliate_info(): Promise<void> {
-    return this.api.post<void>(`${this.baseUri}/me`, {});
+  public async get_affiliate_info(): Promise<unknown> {
+    return this.api.post<unknown>(`${this.baseUri}/me`, {});
   }
 
-  // TODO: untested route
   public async claim_money(): Promise<unknown> {
     return this.api.post<unknown>(`${this.baseUri}/transfer_money`, {});
   }
 
-  // TODO: Update response when list is not empty
   public async list_historical_rewards(
     payload: IListHistoricalRewardsPayload = {},
   ): Promise<IListHistoricalRewardsResponse> {
@@ -32,7 +29,6 @@ export class AffilateRoutes {
     );
   }
 
-  // TODO: untested - Test on dummy acc
   public async set_or_change_affiliate_code(payload: ISetOrChangeAffiliateCodePayload): Promise<unknown> {
     return this.api.post<unknown, ISetOrChangeAffiliateCodePayload>(`${this.baseUri}/set_code`, payload);
   }
