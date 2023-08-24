@@ -8,3 +8,8 @@ export interface IDelistSingleItemPayload {
 export interface IDelistMultipleItemsPayload {
   items: IDelistSingleItemPayload[];
 }
+
+export interface IDelistMultipleItemsResponse {
+  id: string;
+  success: boolean;
+}

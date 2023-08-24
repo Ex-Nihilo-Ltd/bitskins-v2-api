@@ -1,5 +1,5 @@
 import { ApiBase } from '../../../base/api';
-import { IGetReceiptPayload } from './types';
+import { IGetReceiptPayload, IGetReceiptResponse } from './types';
 
 export class ReceiptRoutes {
   private readonly baseUri: string;
@@ -8,7 +8,7 @@ export class ReceiptRoutes {
     this.baseUri = '/market/receipt';
   }
 
-  public async get_receipt(payload: IGetReceiptPayload): Promise<unknown> {
-    return this.api.post<unknown, IGetReceiptPayload>(`${this.baseUri}/get`, payload);
+  public async get_receipt(payload: IGetReceiptPayload): Promise<IGetReceiptResponse> {
+    return this.api.post<IGetReceiptResponse, IGetReceiptPayload>(`${this.baseUri}/get`, payload);
   }
 }

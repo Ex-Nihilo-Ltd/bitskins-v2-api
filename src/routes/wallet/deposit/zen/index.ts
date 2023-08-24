@@ -8,7 +8,7 @@ export class WalletDepositZenRoutes {
     this.baseUri = '/wallet/deposit/zen';
   }
 
-  public async use_gift_code(payload: IDepositZenPayload): Promise<unknown> {
+  public async deposit_zen(payload: IDepositZenPayload): Promise<unknown> {
     return this.api.post<unknown, IDepositZenPayload>(`${this.baseUri}/create`, payload);
   }
 }

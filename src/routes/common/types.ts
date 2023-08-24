@@ -217,3 +217,8 @@ export interface ICounter {
   total: number;
   filtered: number;
 }
+
+export interface IBuyBulkItemsExternal {
+  steam_id: string;
+  steam_token: string;
+}

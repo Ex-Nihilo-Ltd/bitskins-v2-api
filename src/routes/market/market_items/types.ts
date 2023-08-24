@@ -1,5 +1,41 @@
-import { AppId, INumberBoolean, ItemStatus } from '../../common/types';
-import { SearchCSGOField, SearchDota2Field, SearchOrder, SearchRustField, SearchTF2Field } from './enum';
+import { AppId, ICounter, INumberBoolean, ItemStatus } from '../../common/types';
+
+export enum SearchOrder {
+  ASC = 'ASC',
+  DESC = 'DESC',
+}
+
+export enum SearchTF2Field {
+  price = 'price',
+  id = 'id',
+  discount = 'discount',
+  bumped_at = 'bumped_at',
+}
+
+export enum SearchDota2Field {
+  price = 'price',
+  id = 'id',
+  discount = 'discount',
+  bumped_at = 'bumped_at',
+}
+
+export enum SearchCSGOField {
+  price = 'price',
+  id = 'id',
+  discount = 'discount',
+  bumped_at = 'bumped_at',
+  float_value = 'float_value',
+  paint_index = 'paint_index',
+  paint_seed = 'paint_seed',
+  extras_1 = 'extras_1',
+}
+
+export enum SearchRustField {
+  price = 'price',
+  id = 'id',
+  discount = 'discount',
+  bumped_at = 'bumped_at',
+}
 
 export interface IWhereMine {
   status?: ItemStatus[];
@@ -134,4 +170,146 @@ export interface ISearchSkinPayload {
 
 export interface ISearchFiltersPayload {
   app_id: AppId;
+}
+
+export interface IGetFiltersResponse {
+  category: { id: number; name: string; position: number }[];
+  exterior: { id: number; name: string; position: number; short_name: string }[];
+  phase: { id: number; name: string; position: number }[];
+  quality: { id: number; name: string; position: number; group_id: string }[];
+  type: { id: number; name: string; position: number }[];
+  typesub: { id: number; name: string; position: number; type_id: number; group_id: number }[];
+  paint_wear: { id: number; wear_min: number; wear_max: number }[];
+  sticker_collection: { id: number; name: string }[];
+}
+
+export interface ISearchTf2ResponseItem {
+  id: string;
+  asset_id: string;
+  skin_id: number;
+  bot_id: number;
+  price: number;
+  status: number;
+  name: string;
+  class_id: string;
+  skin_status: number;
+  discount: number;
+  suggested_price: number;
+  collection_id: number;
+  quality_id: number;
+  type_id: number;
+  bot_steam_id: string;
+}
+
+export interface ISearchTf2Response {
+  counter: ICounter;
+  list: ISearchTf2ResponseItem[];
+}
+
+export interface ISearchDota2ResponseItem {
+  id: string;
+  asset_id: string;
+  skin_id: number;
+  bot_id: number;
+  price: number;
+  tradehold: number;
+  status: number;
+  name: string;
+  class_id: string;
+  skin_status: number;
+  discount: number;
+  suggested_price: number;
+  hero_id: number;
+  quality_id: number;
+  rarity_id: number;
+  slot_id: number;
+  type_id: number;
+  bot_steam_id: string;
+}
+
+export interface ISearchDota2Response {
+  counter: ICounter;
+  list: ISearchDota2ResponseItem[];
+}
+
+export interface ISearchCSGOResponseItem {
+  id: string;
+  asset_id: string;
+  skin_id: number;
+  bot_id: number;
+  price: number;
+  tradehold: number;
+  sticker_counter: number;
+  ss: number;
+  status: number;
+  name: string;
+  class_id: string;
+  skin_status: number;
+  discount: number;
+  suggested_price: number;
+  category_id: number;
+  collection_id: [[any]];
+  type_id: number;
+  quality_id: number;
+  bot_steam_id: string;
+}
+
+export interface ISearchCSGOResponse {
+  counter: ICounter;
+  list: ISearchCSGOResponseItem[];
+}
+
+export interface ISearchRustResponseItem {
+  id: string;
+  asset_id: string;
+  skin_id: number;
+  bot_id: number;
+  price: number;
+  status: number;
+  name: string;
+  class_id: string;
+  skin_status: number;
+  discount: number;
+  suggested_price: number;
+  category_id: number;
+  type_id: number;
+  bot_steam_id: string;
+}
+
+export interface ISearchRustResponse {
+  counter: ICounter;
+  list: ISearchRustResponseItem[];
+}
+
+export interface ISearchItemDetailsResponse {
+  id: string;
+  asset_id: string;
+  skin_id: number;
+  bot_id: number;
+  price: number;
+  tradehold: number;
+  sticker_counter: number;
+  ss: number;
+  status: number;
+  name: string;
+  class_id: string;
+  skin_status: number;
+  discount: number;
+  suggested_price: number;
+  category_id: number;
+  collection_id: [number];
+  type_id: number;
+  quality_id: number;
+  bot_steam_id: string;
+}
+
+export interface ISearchSkinResponse {
+  id: number;
+  name: string;
+  class_id: string;
+  suggested_price: number;
+}
+
+export interface ISearchStoreResponse {
+  total: { [key in keyof AppId]?: number };
 }

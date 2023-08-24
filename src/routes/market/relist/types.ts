@@ -10,3 +10,8 @@ export interface IRelistSingleItemPayload {
 export interface IRelistMultipleItemsPayload {
   items: IRelistSingleItemPayload[];
 }
+
+export interface IRelistMultipleItemsResponse {
+  id: string;
+  success: boolean;
+}

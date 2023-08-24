@@ -24,3 +24,26 @@ export interface IGetItemsHistoryWhere {
   price_from?: number;
   price_to?: number;
 }
+
+export interface IGetItemsHistoryCounter {
+  total: number;
+  filtered: number;
+}
+
+export interface IGetItemHistoryData {
+  id: string,
+  item_id: string,
+  app_id: AppId,
+  skin_id: number,
+  price: number,
+  created_at: string,
+  fee: number,
+  buyer_country: string,
+  name: string,
+  class_id: string
+}
+
+export interface IGetItemsHistoryResponse {
+  counter: IGetItemsHistoryCounter;
+  list: IGetItemHistoryData[]
+}
