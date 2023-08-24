@@ -57,6 +57,8 @@ api.socket.on_disconnect(() => {
 
 // After authorization subscribe to desired channels (or all)
 api.socket.on_auth(() => {
+  console.log('USER AUTHORIZED');
+
   api.socket.subscribe_to_all();
 });
 
