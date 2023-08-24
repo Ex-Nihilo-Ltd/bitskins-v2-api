@@ -1,16 +1,88 @@
 # Bitskins Wrapper
 
-## Usage Example
-
-```js
-import { BitskinsApiV2 } from 'bitskins-v2-api';
-const api = new BitskinsApiV2();
-```
-
 ## Installation
 
 ```
   $ npm install bitskins-v2-api
+```
+
+## API Usage Example
+
+In order to use API coverage through this SDK, one needs to create an instace of `BitskinsApiV2`, after that
+API requests are made by simply calling the methods on the instance. Usage example following
+
+```ts
+import { BitskinsApiV2 } from 'bitskins-v2-api';
+
+const api = new BitskinsApiV2({ apiKey: process.env.BITSKINS_API_KEY });
+
+// API usage example
+const testApi = async () => {
+  const profileData: ICurrentSession = await api.account.profile.get_current_session();
+
+  console.log('Currently logged in with: ', profileData);
+};
+```
+
+## Socket Usage Example
+
+In order to use socket services provided by Bitskins API v2, one needs to create an instance of `BitskinsApiV2`,
+after that connect all of the required listeners (`on_connect`, `on_disconnect`, `on_auth`, `add_listener`) and then
+to call `instance.socket.connect()` method.
+
+Intended flow that should be set up is
+
+1. Connect sockets
+2. Authorize sockets
+3. Subscribe to desired channels (`SocketChannel` enum)
+
+Usage example for properly connecting sockets following
+
+```ts
+import { BitskinsApiV2, ISocketChannelData, SocketChannel } from 'bitskins-v2-api';
+
+const api = new BitskinsApiV2({ apiKey: process.env.BITSKINS_API_KEY });
+
+// After connection call `authorize`
+api.socket.on_connect(() => {
+  console.log('SOCKETS OPENED');
+
+  api.socket.authorize();
+});
+
+// React somehow to disconnect
+api.socket.on_disconnect(() => {
+  console.log('SOCKETS CLOSED');
+});
+
+// After authorization subscribe to desired channels (or all)
+api.socket.on_auth(() => {
+  api.socket.subscribe_to_all();
+});
+
+// Add listeners for all of the channels that you'll subscribe
+api.socket.add_listener(SocketChannel.listed, (data: ISocketChannelData<SocketChannel.listed>) => {
+  console.log('[EVENT]: listed: ');
+  console.log(data);
+});
+
+api.socket.add_listener(SocketChannel.delisted_or_sold, (data: ISocketChannelData<SocketChannel.delisted_or_sold>) => {
+  console.log('[EVENT]: delisted_or_sold: ');
+  console.log(data);
+});
+
+api.socket.add_listener(SocketChannel.extra_info, (data: ISocketChannelData<SocketChannel.extra_info>) => {
+  console.log('[EVENT]: extra_info: ');
+  console.log(data);
+});
+
+api.socket.add_listener(SocketChannel.price_changed, (data: ISocketChannelData<SocketChannel.price_changed>) => {
+  console.log('[EVENT]: price_changed: ');
+  console.log(data);
+});
+
+// After connecting all handlers, call `connect`
+api.socket.connect();
 ```
 
 ## Features complete coverage of the Bitskins API in its entirety.
@@ -25,13 +97,9 @@ For a deeper insight, refer to the [documentation](https://bitskins.com/docs/api
 
 Each call issued yields a promise containing the data sourced from the response. If, however, an issue arises during the request formation or the response status from Bitskins deviates from the expected "success," the promise will undergo rejection.
 
-```js
-api.market.items_history().then((data) => {...}).catch((error) => {...})
-```
-
 For a comprehensive illustration, refer to the contents within the examples directory.
 
-## Account
+### Account
 
 ### Affiliate
 
