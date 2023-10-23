@@ -1,5 +1,5 @@
 import { ApiBase } from '../../../base/api';
-import { IGetSteamInventoryPayload } from './types';
+import { IGetSteamInventoryPayload, IGetSteamInventoryResponse } from './types';
 
 export class SteamInventoryRoutes {
   private readonly baseUri: string;
@@ -8,7 +8,7 @@ export class SteamInventoryRoutes {
     this.baseUri = '/steam/inventory';
   }
 
-  public async get_steam_inventory(payload: IGetSteamInventoryPayload): Promise<unknown> {
-    return this.api.post<unknown, IGetSteamInventoryPayload>(`${this.baseUri}/list`, payload);
+  public async get_steam_inventory(payload: IGetSteamInventoryPayload): Promise<IGetSteamInventoryResponse[]> {
+    return this.api.post<IGetSteamInventoryResponse[], IGetSteamInventoryPayload>(`${this.baseUri}/list`, payload);
   }
 }

@@ -1,5 +1,5 @@
 import { ApiBase } from '../../../../base/api';
-import { IUseGiftCodePayload } from './types';
+import { IGetUsedGiftCodesResponse, IUseGiftCodePayload } from './types';
 
 export class WalletDepositGiftCodeRoutes {
   private readonly baseUri: string;
@@ -12,7 +12,7 @@ export class WalletDepositGiftCodeRoutes {
     return this.api.post<unknown, IUseGiftCodePayload>(`${this.baseUri}/use`, payload);
   }
 
-  public async get_used_gift_codes(): Promise<unknown> {
-    return this.api.post<unknown>(`${this.baseUri}/list_used`, {});
+  public async get_used_gift_codes(): Promise<IGetUsedGiftCodesResponse> {
+    return this.api.post<IGetUsedGiftCodesResponse>(`${this.baseUri}/list_used`, {});
   }
 }

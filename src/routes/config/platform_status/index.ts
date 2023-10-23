@@ -1,4 +1,5 @@
 import { ApiBase } from '../../../base/api';
+import { IPlatformStatusResponse } from './types';
 
 export class PlatformStatusRoutes {
   private readonly baseUri: string;
@@ -7,7 +8,7 @@ export class PlatformStatusRoutes {
     this.baseUri = '/config/status';
   }
 
-  public async get_platform_status(): Promise<unknown> {
-    return this.api.get<unknown>(`${this.baseUri}/get`);
+  public async get_platform_status(): Promise<IPlatformStatusResponse> {
+    return this.api.get<IPlatformStatusResponse>(`${this.baseUri}/get`);
   }
 }

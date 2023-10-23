@@ -14,3 +14,8 @@ export interface IVerifyDisablingTwoFACodePayload {
 export interface IUnlockTwoFAPayload {
   twofa_code: string;
 }
+
+export interface ICreateTwoFAResponse {
+  twofa_secret: string;
+  ttl: number;
+}

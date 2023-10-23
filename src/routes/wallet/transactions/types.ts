@@ -1,4 +1,4 @@
-import { Order, WalletTransactionsField, WalletTransactionsServiceId } from '../../common/types';
+import { ICounter, Order, WalletTransactionsField, WalletTransactionsServiceId } from '../../common/types';
 
 export interface IGetWalletTransactionsPayload {
   limit?: number;
@@ -19,4 +19,27 @@ export interface IGetWalletTransactionsWhere {
   date_to?: string;
   date?: string;
   service_id?: WalletTransactionsServiceId;
+}
+
+export interface IWalletTransactionListItem {
+  id: string;
+  amount: number;
+  service_id: number;
+  type: number;
+  created_at: string;
+  action: string;
+  channel: string;
+  app_id: number;
+  skin_id: number;
+  name: string;
+}
+
+export interface IGetWalletTransactionsResponse {
+  counter: ICounter;
+  list: IWalletTransactionListItem[];
+}
+
+export interface IGetWalletPendingTransactionsResponse {
+  counter: ICounter;
+  list: IWalletTransactionListItem[];
 }

@@ -1,5 +1,5 @@
 import { ApiBase } from '../../../base/api';
-import { IDepositSteamItemsPayload } from './types';
+import { IDepositSteamItemsPayload, IDespositSteamItemsResponse } from './types';
 
 export class SteamDepositRoutes {
   private readonly baseUri: string;
@@ -8,7 +8,7 @@ export class SteamDepositRoutes {
     this.baseUri = '/steam/deposit';
   }
 
-  public async deposit_steam_items(payload: IDepositSteamItemsPayload): Promise<unknown> {
-    return this.api.post<unknown, IDepositSteamItemsPayload>(`${this.baseUri}/many`, payload);
+  public async deposit_steam_items(payload: IDepositSteamItemsPayload): Promise<IDespositSteamItemsResponse> {
+    return this.api.post<IDespositSteamItemsResponse, IDepositSteamItemsPayload>(`${this.baseUri}/many`, payload);
   }
 }
