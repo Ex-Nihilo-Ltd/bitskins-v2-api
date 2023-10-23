@@ -13,7 +13,7 @@ export class WalletDepositCardRoutes {
   }
 
   public async list_cards(): Promise<unknown> {
-    return this.api.post<unknown>(`${this.baseUri}/add_card`, {});
+    return this.api.post<unknown>(`${this.baseUri}/list_cards`, {});
   }
 
   public async deposit_card(payload: IDepositCardPayload): Promise<unknown> {
